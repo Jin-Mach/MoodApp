@@ -59,5 +59,8 @@ To run the application, execute the following command:
 ## License
 This project is licensed under the MIT License.
 
+## Credits
+Icons used in this project are provided by [Icons8](https://icons8.com/).
+
 ## Contact
 For any questions or feedback, feel free to reach out via my GitHub profile: [Jin-Mach](https://github.com/Jin-Mach).

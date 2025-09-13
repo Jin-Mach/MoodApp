@@ -4,6 +4,7 @@ import pathlib
 from typing import Any
 
 
+# noinspection PyBroadException
 def config_setup(widget_object_name: str) -> dict[str, Any]:
     config = {}
     try:
@@ -11,6 +12,6 @@ def config_setup(widget_object_name: str) -> dict[str, Any]:
         if config_path.exists():
             with open(config_path, "r", encoding="utf-8") as setup_file:
                 config = json.load(setup_file).get(widget_object_name, {})
-    except Exception as e:
-        print(e)
+    except Exception:
+        return {}
     return config

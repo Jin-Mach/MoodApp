@@ -4,5 +4,10 @@
     "mainWindowWidth": 300,
     "mainWindowHeight": 200,
     "appTextLabel": "Your mood tracker application"
+  },
+  "errorHandler": {
+    "errorTextLabelText": "Error:",
+    "continueButtonText": "Continue",
+    "closeButtonText": "Close"
   }
 }

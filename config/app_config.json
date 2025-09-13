@@ -2,8 +2,11 @@
   "mainWindow": {
     "mainWindowTitle": "Mood App",
     "mainWindowWidth": 300,
-    "mainWindowHeight": 200,
-    "appTextLabel": "Your mood tracker application\n(select mood)"
+    "mainWindowHeight": 250,
+    "appTextLabel": "Your mood tracker application\n(select mood)",
+    "notesCheckbox": "Add notes?",
+    "notesEditMaxLength": 50,
+    "notesEditPlaceholderText": "max 50 letter..."
   },
   "errorHandler": {
     "errorTextLabelText": "Error:",

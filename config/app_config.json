@@ -4,7 +4,8 @@
     "mainWindowWidth": 300,
     "mainWindowHeight": 250,
     "appTextLabel": "Your mood tracker application\n(select mood)",
-    "notesCheckbox": "Add notes?",
+    "notesCheckboxText": "Add note?",
+    "notesCheckboxState": true,
     "notesEditMaxLength": 50,
     "notesEditPlaceholderText": "max 50 letter..."
   },

@@ -1,8 +1,9 @@
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtWidgets import QMainWindow, QVBoxLayout, QLabel, QHBoxLayout, QPushButton, QWidget
 
 from src.utilities.config_provider import config_setup
 from src.utilities.error_handler import ErrorHandler
+from src.utilities.icons_provider import IconsProvider
 from src.utilities.support_provider import SupportProvider
 
 
@@ -13,6 +14,7 @@ class MainWindow(QMainWindow):
         self.error_handler = ErrorHandler(self)
         self.setCentralWidget(self.create_gui())
         self.load_setup()
+        IconsProvider.set_icons(self.findChildren(QPushButton), QSize(70, 70))
 
     def create_gui(self) -> QWidget:
         main_widget = QWidget()
@@ -22,13 +24,13 @@ class MainWindow(QMainWindow):
         self.app_text_label.setObjectName("appTextLabel")
         self.app_text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         mood_buttons_layout = QHBoxLayout()
-        self.happy_mood_button = QPushButton()
-        self.happy_mood_button.setObjectName("happyMoodButton")
+        self.smile_mood_button = QPushButton()
+        self.smile_mood_button.setObjectName("smileMoodButton")
         self.neutral_mood_button = QPushButton()
         self.neutral_mood_button.setObjectName("neutralMoodButton")
         self.sad_mood_button = QPushButton()
         self.sad_mood_button.setObjectName("sadMoodButton")
-        mood_buttons_layout.addWidget(self.happy_mood_button)
+        mood_buttons_layout.addWidget(self.smile_mood_button)
         mood_buttons_layout.addWidget(self.neutral_mood_button)
         mood_buttons_layout.addWidget(self.sad_mood_button)
         main_layout.addWidget(self.app_text_label)
@@ -50,7 +52,7 @@ class MainWindow(QMainWindow):
                 self.app_text_label.setText("Mood App")
                 raise ValueError("Failed to load UI config")
         except Exception as e:
-            self.error_handler.write_show_exception(e, True, True, True)
+            self.error_handler.write_show_exception(e)
 
     def showEvent(self, event) -> None:
         super().showEvent(event)

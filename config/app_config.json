@@ -3,7 +3,7 @@
     "mainWindowTitle": "Mood App",
     "mainWindowWidth": 300,
     "mainWindowHeight": 200,
-    "appTextLabel": "Your mood tracker application"
+    "appTextLabel": "Your mood tracker application\n(select mood)"
   },
   "errorHandler": {
     "errorTextLabelText": "Error:",

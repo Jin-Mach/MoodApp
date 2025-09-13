@@ -1,6 +1,6 @@
 import sys
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtWidgets import QDialog, QLayout, QVBoxLayout, QLabel, QHBoxLayout, QPushButton
 
 from src.utilities.logger_provider import get_logger
@@ -57,12 +57,12 @@ class ErrorHandler(QDialog):
     def write_show_exception(self, exception: Exception, show_dialog: bool = True, continue_visible: bool = True,
                              cancel_visible: bool = False) -> None:
         if not self.parent() or not self.parent().isVisible():
-            SupportProvider.centre_on_screen(self)
+            QTimer.singleShot(0, lambda: SupportProvider.centre_on_screen(self))
         if show_dialog:
             self.error_text_label.setText(f"{self.default_text}\n{type(exception).__name__}: {exception}")
             self.continue_button.setVisible(continue_visible)
             self.cancel_button.setVisible(cancel_visible)
             self.setWindowModality(Qt.WindowModality.ApplicationModal)
-            self.exec()
+        self.exec()
         logger = get_logger()
         logger.error(exception, exc_info=True)

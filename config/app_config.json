@@ -1,0 +1,8 @@
+{
+  "mainWindow": {
+    "mainWindowTitle": "Mood App",
+    "mainWindowWidth": 300,
+    "mainWindowHeight": 200,
+    "appTextLabel": "Your mood tracker application"
+  }
+}

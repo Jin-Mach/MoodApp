@@ -2,8 +2,6 @@ import requests
 
 from PyQt6.QtWidgets import QWidget, QApplication
 
-from src.utilities.error_handler import ErrorHandler
-
 
 class SupportProvider:
 
@@ -23,6 +21,7 @@ class SupportProvider:
             request = requests.head("https://github.com/Jin-Mach/MoodApp", timeout=3)
             return request.ok
         except Exception as e:
+            from src.utilities.error_handler import ErrorHandler
             error_handler = ErrorHandler()
             error_handler.write_show_exception(e, False)
         return False

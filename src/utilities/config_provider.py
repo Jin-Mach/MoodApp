@@ -3,6 +3,7 @@ import pathlib
 
 from typing import Any
 
+
 def config_setup(widget_object_name: str) -> dict[str, Any]:
     config = {}
     try:

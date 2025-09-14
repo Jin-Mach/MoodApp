@@ -1,6 +1,7 @@
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtWidgets import QMainWindow, QVBoxLayout, QLabel, QHBoxLayout, QPushButton, QWidget, QCheckBox, QLineEdit
 
+from src.core.mood_manager import MoodManager
 from src.utilities.config_provider import config_setup
 from src.utilities.error_handler import ErrorHandler
 from src.utilities.icons_provider import IconsProvider
@@ -16,6 +17,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.create_gui())
         self.load_setup()
         IconsProvider.set_icons(self.findChildren(QPushButton), QSize(70, 70))
+        self.create_connection()
 
     def create_gui(self) -> QWidget:
         main_widget = QWidget()
@@ -33,7 +35,6 @@ class MainWindow(QMainWindow):
         check_button_layout = QHBoxLayout()
         self.notes_checkbox = QCheckBox()
         self.notes_checkbox.setObjectName("notesCheckbox")
-        self.notes_checkbox.setChecked(True)
         self.notes_checkbox.checkStateChanged.connect(self.show_notes)
         self.notes_edit = QLineEdit()
         self.notes_edit.setObjectName("notesEdit")
@@ -73,6 +74,12 @@ class MainWindow(QMainWindow):
                 raise ValueError("Failed to load UI config")
         except Exception as e:
             self.error_handler.write_show_exception(e)
+
+    def create_connection(self) -> None:
+        self.smile_mood_button.clicked.connect(lambda: MoodManager.save_current_mood(1, self.notes_edit.text().strip()))
+        self.neutral_mood_button.clicked.connect(lambda: MoodManager.save_current_mood(0, self.notes_edit.text().strip()))
+        self.sad_mood_button.clicked.connect(lambda: MoodManager.save_current_mood(-1, self.notes_edit.text().strip()))
+        self.notes_checkbox.checkStateChanged.connect(self.show_notes)
 
     def show_notes(self) -> None:
         self.notes_edit.setReadOnly(not self.notes_checkbox.isChecked())

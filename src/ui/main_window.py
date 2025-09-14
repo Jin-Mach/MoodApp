@@ -2,6 +2,7 @@ from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtWidgets import QMainWindow, QVBoxLayout, QLabel, QHBoxLayout, QPushButton, QWidget, QCheckBox, QLineEdit
 
 from src.core.mood_manager import MoodManager
+from src.ui.mood_save_dialog import MoodSaveDialog
 from src.utilities.config_provider import config_setup
 from src.utilities.error_handler import ErrorHandler
 from src.utilities.icons_provider import IconsProvider
@@ -76,13 +77,20 @@ class MainWindow(QMainWindow):
             self.error_handler.write_show_exception(e)
 
     def create_connection(self) -> None:
-        self.smile_mood_button.clicked.connect(lambda: MoodManager.save_current_mood(1, self.notes_edit.text().strip()))
-        self.neutral_mood_button.clicked.connect(lambda: MoodManager.save_current_mood(0, self.notes_edit.text().strip()))
-        self.sad_mood_button.clicked.connect(lambda: MoodManager.save_current_mood(-1, self.notes_edit.text().strip()))
+        self.smile_mood_button.clicked.connect(lambda: self.save_mood(1))
+        self.neutral_mood_button.clicked.connect(lambda: self.save_mood(0))
+        self.sad_mood_button.clicked.connect(lambda: self.save_mood(-1))
         self.notes_checkbox.checkStateChanged.connect(self.show_notes)
 
     def show_notes(self) -> None:
         self.notes_edit.setReadOnly(not self.notes_checkbox.isChecked())
+
+    def save_mood(self, mood: int) -> None:
+        MoodManager.save_current_mood(mood, self.notes_edit.text().strip())
+        self.notes_edit.clear()
+        mood_save_dialog = MoodSaveDialog(self)
+        mood_save_dialog.set_text(mood)
+        mood_save_dialog.exec()
 
     def showEvent(self, event) -> None:
         super().showEvent(event)

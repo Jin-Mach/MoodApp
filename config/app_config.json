@@ -9,6 +9,14 @@
     "notesEditMaxLength": 50,
     "notesEditPlaceholderText": "max 50 letter..."
   },
+  "moodSavedDialog": {
+    "moodSavedDialogTitle": "Mood saved",
+    "mood_map": {
+                "1": ["Happy", "Congrats! Here’s to more days like this."],
+                "0": ["Neutral", "Just another standard day. Enjoy it!"],
+                "-1": ["Sad", "Oops! Today wasn’t the best.\nAt least you didn’t spill coffee on your keyboard\n… yet!"]
+            }
+  },
   "errorHandler": {
     "errorTextLabelText": "Error:",
     "continueButtonText": "Continue",

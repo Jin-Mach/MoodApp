@@ -27,6 +27,8 @@ class MoodSaveDialog(QDialog):
         self.motivation_text_label.setObjectName("motivationTextLabel")
         self.motivation_text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         button_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Close)
+        self.close_button = button_box.button(QDialogButtonBox.StandardButton.Close)
+        self.close_button.setObjectName("closeButton")
         button_box.rejected.connect(self.reject)
         main_layout.addWidget(self.mood_text_label)
         main_layout.addWidget(self.motivation_text_label)
@@ -38,8 +40,14 @@ class MoodSaveDialog(QDialog):
             config = config_setup(self.objectName())
             if config:
                 self.setWindowTitle(config.get("moodSavedDialogTitle", "Mood saved"))
+                self.close_button.setText(config.get(f"{self.close_button.objectName()}Text", "Close"))
+                self.close_button.setToolTip(config.get(f"{self.close_button.objectName()}Tooltip", "Close dialog"))
+                self.close_button.setToolTipDuration(3000)
             else:
                 self.setWindowTitle("MoodSaved")
+                self.close_button.setText("Close")
+                self.close_button.setToolTip("Close dialog")
+                self.close_button.setToolTipDuration(3000)
         except Exception as e:
             self.error_handler.write_show_exception(e)
 

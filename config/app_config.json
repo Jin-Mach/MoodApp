@@ -6,6 +6,9 @@
     "appTextLabel": "Your mood tracker application\n(select mood)",
     "notesCheckboxText": "Add note?",
     "notesCheckboxState": true,
+    "smileMoodButtonTooltip": "Record happy mood",
+    "neutralMoodButtonTooltip":  "Record neutral mood",
+    "sadMoodButtonTooltip": "Record sad mood",
     "notesEditMaxLength": 50,
     "notesEditPlaceholderText": "max 50 letter..."
   },
@@ -15,7 +18,9 @@
                 "1": ["Happy", "Congrats! Here’s to more days like this."],
                 "0": ["Neutral", "Just another standard day. Enjoy it!"],
                 "-1": ["Sad", "Oops! Today wasn’t the best.\nAt least you didn’t spill coffee on your keyboard\n… yet!"]
-            }
+            },
+    "closeButtonText": "Close",
+    "closeButtonTooltip": "Close dialog"
   },
   "errorHandler": {
     "errorTextLabelText": "Error:",

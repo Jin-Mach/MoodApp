@@ -8,6 +8,7 @@ from src.utilities.config_provider import config_setup
 from src.utilities.support_provider import SupportProvider
 
 
+# noinspection PyUnresolvedReferences
 class ErrorHandler(QDialog):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)

@@ -16,8 +16,9 @@ class MainWindow(QMainWindow):
         self.setObjectName("mainWindow")
         self.error_handler = ErrorHandler(self)
         self.setCentralWidget(self.create_gui())
+        self.buttons = self.findChildren(QPushButton)
         self.load_setup()
-        IconsProvider.set_icons(self.findChildren(QPushButton), QSize(70, 70))
+        IconsProvider.set_icons(self.buttons, QSize(70, 70))
         self.create_connection()
 
     def create_gui(self) -> QWidget:
@@ -61,8 +62,13 @@ class MainWindow(QMainWindow):
                 self.app_text_label.setText(config.get(self.app_text_label.objectName(), "Mood App"))
                 self.notes_checkbox.setText(config.get(f"{self.notes_checkbox.objectName()}Text", "Add note?"))
                 self.notes_checkbox.setChecked(config.get(f"{self.notes_checkbox.objectName()}State", True))
+                self.smile_mood_button.setToolTip(config.get(f"{self.smile_mood_button.objectName()}Tooltip", "Record happy mood"))
+                self.neutral_mood_button.setToolTip(config.get(f"{self.neutral_mood_button.objectName()}Tooltip", "Record neutral mood"))
+                self.sad_mood_button.setToolTip(config.get(f"{self.sad_mood_button.objectName()}Tooltip", "Record sad mood"))
                 self.notes_edit.setMaxLength(config.get(f"{self.notes_edit.objectName()}MaxLength", 50))
                 self.notes_edit.setPlaceholderText(config.get(f"{self.notes_edit.objectName()}PlaceholderText", "max 50 letter..."))
+                for button in self.buttons:
+                    button.setToolTipDuration(3000)
             else:
                 self.setWindowTitle("Mood App")
                 self.setFixedWidth(300)
@@ -70,8 +76,13 @@ class MainWindow(QMainWindow):
                 self.app_text_label.setText("Your mood tracker application\n(select mood)")
                 self.notes_checkbox.setText("Add note?")
                 self.notes_checkbox.setChecked(True)
+                self.smile_mood_button.setToolTip("Record happy mood")
+                self.neutral_mood_button.setToolTip("Record neutral mood")
+                self.sad_mood_button.setToolTip("Record sad mood")
                 self.notes_edit.setMaxLength(50)
                 self.notes_edit.setPlaceholderText("max 50 letter...")
+                for button in self.buttons:
+                    button.setToolTipDuration(3000)
                 raise ValueError("Failed to load UI config")
         except Exception as e:
             self.error_handler.write_show_exception(e)

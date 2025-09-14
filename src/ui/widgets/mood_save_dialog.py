@@ -48,6 +48,7 @@ class MoodSaveDialog(QDialog):
                 self.close_button.setText("Close")
                 self.close_button.setToolTip("Close dialog")
                 self.close_button.setToolTipDuration(3000)
+                raise ValueError("Failed to load UI config")
         except Exception as e:
             self.error_handler.write_show_exception(e)
 

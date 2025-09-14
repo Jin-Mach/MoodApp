@@ -12,6 +12,12 @@
     "notesEditMaxLength": 50,
     "notesEditPlaceholderText": "max 50 letter..."
   },
+  "toolBar": {
+    "optionsMenuButtonText": "Options",
+    "appSettingsActionText": "Settings",
+    "appManualActionText": "Manual",
+    "aboutAppActionText": "About"
+  },
   "moodSavedDialog": {
     "moodSavedDialogTitle": "Mood saved",
     "mood_map": {

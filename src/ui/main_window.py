@@ -2,7 +2,8 @@ from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtWidgets import QMainWindow, QVBoxLayout, QLabel, QHBoxLayout, QPushButton, QWidget, QCheckBox, QLineEdit
 
 from src.core.mood_manager import MoodManager
-from src.ui.mood_save_dialog import MoodSaveDialog
+from src.ui.widgets.tool_bar import ToolBar
+from src.ui.widgets.mood_save_dialog import MoodSaveDialog
 from src.utilities.config_provider import config_setup
 from src.utilities.error_handler import ErrorHandler
 from src.utilities.icons_provider import IconsProvider
@@ -14,7 +15,9 @@ class MainWindow(QMainWindow):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.setObjectName("mainWindow")
+        self.tool_bar = ToolBar(self)
         self.error_handler = ErrorHandler(self)
+        self.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.tool_bar)
         self.setCentralWidget(self.create_gui())
         self.buttons = self.findChildren(QPushButton)
         self.load_setup()

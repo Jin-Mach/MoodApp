@@ -12,7 +12,7 @@ class MoodManager:
     @staticmethod
     def save_current_mood(mood: int, note: str) -> None:
         try:
-s            json_data = []
+            json_data = []
             current_datetime = datetime.datetime.now().isoformat()
             new_data = {
                 "datetime": current_datetime,

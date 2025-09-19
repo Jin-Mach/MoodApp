@@ -1,10 +1,12 @@
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QToolBar, QToolButton, QMenu
 
+from src.ui.widgets.about_dialog import AboutDialog
 from src.utilities.config_provider import config_setup
 from src.utilities.error_handler import ErrorHandler
 
 
+# noinspection PyUnresolvedReferences
 class ToolBar(QToolBar):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -14,6 +16,7 @@ class ToolBar(QToolBar):
         self.error_handler = ErrorHandler(self.parent())
         self.create_gui()
         self.load_setup()
+        self.create_connection()
 
     def create_gui(self) -> None:
         options_menu = QMenu()
@@ -39,7 +42,7 @@ class ToolBar(QToolBar):
                 self.app_settings_action.setText(config.get(f"{self.app_settings_action.objectName()}Text", "Settings"))
                 self.app_manual_action.setText(config.get(f"{self.app_manual_action.objectName()}Text", "Manual"))
                 self.about_app_action.setText(config.get(f"{self.about_app_action.objectName()}Text", "About"))
-                self.options_menu_button.setText(config.get(f"{self.options_menu_button}Text", "Options"))
+                self.options_menu_button.setText(config.get(f"{self.options_menu_button.objectName()}Text", "Options"))
             else:
                 self.app_settings_action.setText("Settings")
                 self.app_manual_action.setText("Manual")
@@ -48,3 +51,10 @@ class ToolBar(QToolBar):
                 raise ValueError("Failed to load UI config")
         except Exception as e:
             self.error_handler.write_show_exception(e)
+
+    def create_connection(self) -> None:
+        self.about_app_action.triggered.connect(self.show_about_dialog)
+
+    def show_about_dialog(self) -> None:
+        about_dialog = AboutDialog(self.parent())
+        about_dialog.exec()

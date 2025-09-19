@@ -1,15 +1,11 @@
 {
   "mainWindow": {
     "mainWindowTitle": "Mood App",
-    "mainWindowWidth": 300,
-    "mainWindowHeight": 250,
     "appTextLabel": "Your mood tracker application\n(select mood)",
     "notesCheckboxText": "Add note?",
-    "notesCheckboxState": true,
     "smileMoodButtonTooltip": "Record happy mood",
     "neutralMoodButtonTooltip":  "Record neutral mood",
     "sadMoodButtonTooltip": "Record sad mood",
-    "notesEditMaxLength": 50,
     "notesEditPlaceholderText": "max 50 letter..."
   },
   "toolBar": {
@@ -17,6 +13,11 @@
     "appSettingsActionText": "Settings",
     "appManualActionText": "Manual",
     "aboutAppActionText": "About"
+  },
+  "aboutDialog": {
+    "aboutDialogTitle": "About",
+    "aboutTextLabelText": "Mood App\nVersion 1.0\nAuthor: Jin-Mach\n",
+    "closeButtonText": "Close"
   },
   "moodSavedDialog": {
     "moodSavedDialogTitle": "Mood saved",

@@ -14,6 +14,11 @@
     "appManualActionText": "Manual",
     "aboutAppActionText": "About"
   },
+  "manualDialog": {
+    "manualDialogTitle": "Manual",
+    "manualEditText": "<p align=\"center\">MoodApp</p><p>1. Select your current mood from the main screen.</p><p>2. Optionally, write a short note about your day.</p>",
+    "closeButtonText": "Close"
+  },
   "aboutDialog": {
     "aboutDialogTitle": "About",
     "aboutTextLabelText": "Mood App\nVersion 1.0\nAuthor: Jin-Mach\n",

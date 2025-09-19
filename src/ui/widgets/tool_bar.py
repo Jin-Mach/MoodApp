@@ -2,6 +2,7 @@ from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QToolBar, QToolButton, QMenu
 
 from src.ui.widgets.about_dialog import AboutDialog
+from src.ui.widgets.manual_dialog import ManualDialog
 from src.utilities.config_provider import config_setup
 from src.utilities.error_handler import ErrorHandler
 
@@ -53,7 +54,12 @@ class ToolBar(QToolBar):
             self.error_handler.write_show_exception(e)
 
     def create_connection(self) -> None:
+        self.app_manual_action.triggered.connect(self.show_manual_dialog)
         self.about_app_action.triggered.connect(self.show_about_dialog)
+
+    def show_manual_dialog(self) -> None:
+        manual_dialog = ManualDialog(self.parent())
+        manual_dialog.show()
 
     def show_about_dialog(self) -> None:
         about_dialog = AboutDialog(self.parent())

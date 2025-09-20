@@ -17,7 +17,14 @@
   },
   "historyDialog": {
     "historyDialogTitle": "History",
-    "historyTableLabels": ["Date", "Mood", "Note"]
+    "historyTableLabels": ["Date", "Mood", "Note"],
+    "deleteButtonText": "Delete history",
+    "closeButtonText": "Close"
+  },
+  "deleteDialog": {
+    "deleteLabelText": "Are you sure you want to delete all saved mood history?",
+    "deleteButtonText": "Delete",
+    "closeButtonText": "Close"
   },
   "manualDialog": {
     "manualDialogTitle": "Manual",

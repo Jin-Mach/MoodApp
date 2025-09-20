@@ -63,3 +63,13 @@ class MoodManager:
             error_handler = ErrorHandler()
             error_handler.write_show_exception(e)
             return []
+
+    @staticmethod
+    def delete_saved_moods() -> None:
+        try:
+            mood_path = MoodManager.mood_data_path.joinpath("user_data.json")
+            if mood_path.exists():
+                mood_path.unlink()
+        except Exception as e:
+            error_handler = ErrorHandler()
+            error_handler.write_show_exception(e)

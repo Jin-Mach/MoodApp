@@ -5,6 +5,7 @@
 ## Features
 
 - Track your current mood
+- Show mood history
 - User-friendly interface using PyQt6.
 
 ## Installation
@@ -49,11 +50,11 @@ To run the application, execute the following command:
 
 - On Windows
     ```bash
-    python MoodApp.py
+    python mood_app.py
     ```
 - On macOS/Linux
     ```bash
-    python3 MoodApp.py
+    python3 mood_app.py
     ```
 
 ## License

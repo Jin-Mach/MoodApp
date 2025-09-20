@@ -1,4 +1,4 @@
-requests
-PyQt6~=6.9.1
-PyQt6_sip~=13.10.2
-setuptools~=80.9.0
+requests>=2.32.5
+PyQt6>=6.9.1
+PyQt6_sip>=13.10.2
+setuptools>=80.9.0

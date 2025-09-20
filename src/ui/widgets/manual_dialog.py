@@ -31,7 +31,8 @@ class ManualDialog(QDialog):
         try:
             config = config_setup(self.objectName())
             manual_text = ("<p align=\"center\">MoodApp</p><p>1. Select your current mood from the main screen.</p><p>"
-                           "2. Optionally, write a short note about your day.</p>")
+                           "2. Optionally, write a short note about your day.</p><p>"
+                           "3. To view your mood history, click on Options → History.</p>")
             if config:
                 self.setWindowTitle(config.get(f"{self.objectName()}Title", "Manual"))
                 self.manual_edit.setHtml(config.get(f"{self.manual_edit.objectName()}Text", manual_text))

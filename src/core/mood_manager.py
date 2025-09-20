@@ -31,3 +31,35 @@ class MoodManager:
         except Exception as e:
             error_handler = ErrorHandler()
             error_handler.write_show_exception(e)
+
+    @staticmethod
+    def load_saved_mood() -> list[dict[str, str | int]]:
+        try:
+            saved_mood = []
+            data_path = MoodManager.mood_data_path.joinpath("user_data.json")
+            if data_path.exists() and data_path.stat().st_size > 0:
+                with open(data_path, "r", encoding="utf-8") as file:
+                    saved_mood = json.load(file)
+            return saved_mood
+        except Exception as e:
+            error_handler = ErrorHandler()
+            error_handler.write_show_exception(e)
+            return saved_mood
+
+    @staticmethod
+    def format_data() -> list[tuple]:
+        try:
+            formated_data = []
+            str_date = ""
+            mood_data = MoodManager.load_saved_mood()
+            for mood in mood_data:
+                date = mood.get("datetime", "")
+                if date:
+                    date_time = datetime.datetime.fromisoformat(date)
+                    str_date = date_time.strftime("%d.%m.%Y %H:%M")
+                formated_data.append((str_date, mood.get("mood", ""), mood.get("note", "")))
+            return formated_data
+        except Exception as e:
+            error_handler = ErrorHandler()
+            error_handler.write_show_exception(e)
+            return []

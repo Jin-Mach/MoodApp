@@ -10,13 +10,18 @@
   },
   "toolBar": {
     "optionsMenuButtonText": "Options",
-    "appSettingsActionText": "Settings",
+    "appHistoryActionText": "History",
+    "aboutMenuButtonText": "More",
     "appManualActionText": "Manual",
     "aboutAppActionText": "About"
   },
+  "historyDialog": {
+    "historyDialogTitle": "History",
+    "historyTableLabels": ["Date", "Mood", "Note"]
+  },
   "manualDialog": {
     "manualDialogTitle": "Manual",
-    "manualEditText": "<p align=\"center\">MoodApp</p><p>1. Select your current mood from the main screen.</p><p>2. Optionally, write a short note about your day.</p>",
+    "manualEditText": "<p align=\"center\">MoodApp</p><p>1. Select your current mood from the main screen.</p><p>2. Optionally, write a short note about your day.</p><p>3. To view your mood history, click on Options → History.</p>",
     "closeButtonText": "Close"
   },
   "aboutDialog": {

@@ -21,9 +21,14 @@
     ```
 
 3. Create a virtual environment:
-    ```
-    python -m venv .venv
-    ```
+   - On Windows
+     ```
+     python -m venv .venv
+     ```
+   - On MacOs/Linux
+   - ```
+     python3 -m venv .venv
+     ```
 
 4. Activate the virtual environment:
 
@@ -49,11 +54,11 @@
 To run the application, execute the following command:
 
 - On Windows
-    ```bash
+    ```
     python mood_app.py
     ```
 - On macOS/Linux
-    ```bash
+    ```
     python3 mood_app.py
     ```
 
